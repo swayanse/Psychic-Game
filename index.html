@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic Game......muahahAHAHAHAH</title>
+  <!-- Added link to reset.css and style.css-->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>   
+<body>
+  <div id="container">
+    <header id="head-text">Welcome to the Psychic's Game...Play at your own risk!!!@#!</header>
+    <div id="game-box">
+      <!-- Scoreboard -- all in one div -- each time anything changes, whole div gets updated-->  
+      <div id="stats-div">
+            Wins: <span id="wins"></span><br>
+            Losses: <span id="losses"></span><br>
+            Guesses Left: <span id="guesses-left"></span><br><hr>
+      </div>
+      <div id="guesses-div">Letters used: <span id="guesses"></span></div>
+    </div>
+  </div>
+
+  <!-- <script type="text/javascript" src="assets/javascript/game.js"></script> -->
+  <script type="text/javascript">
+    // Document ready function so the HTML loads first
+    $(document).ready(function(){
+     // Make an array with all 26 letters and assign it to a variable
+     var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+     // Make a variable to count the number of guesses, counting down to being a loser.
+     var guessesLeft = 9;
+     // Make a variable to count wins
+     var wins = 0;
+     // Make a variable to count losses
+     var losses = 0;
+     // Make an array to hold guessed letters
+     var guessed = [];
+     // Make a variable to hold the secret letter
+     var secretLetter = null;
+    
+     // Make a function to update guesses left value
+     var updateGuessesLeft = function() {
+        document.querySelector("#guesses-left").innerHTML = guessesLeft;
+     }
+     // Make a function to update the secret letter
+     var updateLetterToGuess = function() {
+        secretLetter = letters[Math.floor(Math.random() * letters.length)];
+     }
+
+     var updateGuessesSoFar = function() {
+        document.querySelector("#guesses-so-far").innerHTML = guessed.join(", ");
+     }
+     // Function to reset the game if won or lost
+     var reset = function() {
+       guessesLeft = 9;
+       guessedLetters = [];
+       updateLetterToGuess();
+       updateGuessesLeft();
+       updateGuessesSoFar();
+     };
+
+updateLetterToGuess();
+updateGuessesLeft();
+       // On keypress, tick the guess counter down one IF letter pick is within 'letters',
+       // Pop picked letter from letters and push it into 'guessed'.
+       $(document).keypress(function(press){
+        
+       })
+
+
+     })
+  </script>
+</body> 
+</html>
